@@ -16,13 +16,14 @@ models:
       - name: order_status
         tests:
           - accepted_values:
-              values: ['placed', 'shipped', 'completed', 'returned','return_pending']
+              values:
+                ["placed", "shipped", "completed", "returned", "return_pending"]
   - name: tbl_cl_customers
     columns:
       - name: customer_id
         tests:
           - unique
-          - not_null 
+          - not_null
   - name: tbl_cl_payments
     columns:
       - name: payment_id
@@ -38,7 +39,7 @@ models:
         description: "Customer ID"
         tests:
           - not_null
-          - unique 
+          - unique
       - name: first_name
         description: "First name of the customer"
       - name: last_name
@@ -49,5 +50,5 @@ models:
         description: "The last (most recent) order date for the customer"
       - name: number_of_orders
         description: "Number of orders placed till now (including returned orders)"
-      - name: customer_lifetime_value 
+      - name: customer_lifetime_value
         description: "The sum of all payments made by the customer (including returned orders)"
