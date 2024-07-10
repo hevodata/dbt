@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'hevo'
 version: '1.0.0'
 config-version: 2
 
@@ -36,7 +36,17 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
+  hevo:
+    # Applies to all files under models/hevo/
+    clean:
+      +database: "{{env_var('DBT_DATABASE')}}"
+      +schema: CLEAN
       +materialized: table
+    aggregate:
+      +database: "{{env_var('DBT_DATABASE')}}"
+      +schema: AGGREGATE
+      +materialized: table
+snapshots:
+  hevo:
+    +target_schema: CLEAN
+    +target_database: "{{env_var('DBT_DATABASE')}}"
