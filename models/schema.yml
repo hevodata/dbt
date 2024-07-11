@@ -4,40 +4,40 @@ models:
   - name: tbl_cl_orders
     columns:
       - name: order_id
-        tests:
+        data_tests:
           - unique
           - not_null
       - name: customer_id
-        tests:
+        data_tests:
           - not_null
           - relationships:
               to: ref('tbl_cl_customers')
               field: customer_id
       - name: order_status
-        tests:
+        data_tests:
           - accepted_values:
               values:
                 ["placed", "shipped", "completed", "returned", "return_pending"]
   - name: tbl_cl_customers
     columns:
       - name: customer_id
-        tests:
+        data_tests:
           - unique
           - not_null
   - name: tbl_cl_payments
     columns:
       - name: payment_id
-        tests:
+        data_tests:
           - not_null
       - name: order_id
-        tests:
+        data_tests:
           - not_null
   - name: dim_customer
     description: "Customer Table"
     columns:
       - name: customer_id
         description: "Customer ID"
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: first_name
