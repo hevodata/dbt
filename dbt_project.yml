@@ -42,10 +42,16 @@ models:
       +database: "{{env_var('DBT_DATABASE')}}"
       +schema: CLEAN
       +materialized: table
+      +persist_docs:
+        relation: true
+        columns: true
     aggregate:
       +database: "{{env_var('DBT_DATABASE')}}"
       +schema: AGGREGATE
       +materialized: table
+      +persist_docs:
+        relation: true
+        columns: true
 snapshots:
   hevo:
     +target_schema: CLEAN
