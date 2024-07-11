@@ -52,7 +52,4 @@ models:
       +persist_docs:
         relation: true
         columns: true
-snapshots:
-  hevo:
-    +target_schema: CLEAN
-    +target_database: "{{env_var('DBT_DATABASE')}}"
+
